@@ -30,13 +30,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/modules/getData.js":
+/*!********************************!*\
+  !*** ./src/modules/getData.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getData);\r\n\r\nfunction getData() {\r\n    return fetch('https://ozon-f435b-default-rtdb.europe-west1.firebasedatabase.app/goods.json')\r\n        .then((res) => res.json());\r\n}\n\n//# sourceURL=webpack://js-ozon/./src/modules/getData.js?");
+
+/***/ }),
+
+/***/ "./src/modules/postData.js":
+/*!*********************************!*\
+  !*** ./src/modules/postData.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (postData);\r\n\r\nfunction postData() {\r\n    return fetch('https://ozon-f435b-default-rtdb.europe-west1.firebasedatabase.app/goods.json', {\r\n        method: 'POST',\r\n        body: JSON.stringify({\r\n            title: \"Игровая приставка Sony PlayStation 4 Pro\",\r\n            price: 33990,\r\n            sale: false,\r\n            img: \"https://cdn1.ozone.ru/multimedia/c400/1033180284.jpg\",\r\n            category: \"Игровая приставка\"\r\n        }),\r\n        headers: {\r\n            'Content-type': 'application/json; charset=UTF-8',\r\n        },\r\n    }).then(res => res.json());\r\n}\n\n//# sourceURL=webpack://js-ozon/./src/modules/postData.js?");
+
+/***/ }),
+
 /***/ "./src/modules/second.js":
 /*!*******************************!*\
   !*** ./src/modules/second.js ***!
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (second);\r\n\r\nfunction second() {\r\n}\n\n//# sourceURL=webpack://js-ozon/./src/modules/second.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _getData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getData */ \"./src/modules/getData.js\");\n/* harmony import */ var _postData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./postData */ \"./src/modules/postData.js\");\n\r\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (second);\r\n\r\nfunction second() {\r\n    const cartButton = document.getElementById('cart');\r\n\r\n    cartButton.addEventListener('click', () => {\r\n        (0,_postData__WEBPACK_IMPORTED_MODULE_1__[\"default\"])().then((data) => {\r\n            console.log(data);\r\n            (0,_getData__WEBPACK_IMPORTED_MODULE_0__[\"default\"])().then((data) => {\r\n                console.log(data);\r\n            });\r\n        });\r\n    });\r\n}\n\n//# sourceURL=webpack://js-ozon/./src/modules/second.js?");
 
 /***/ })
 
