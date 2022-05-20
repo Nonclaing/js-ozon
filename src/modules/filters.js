@@ -10,12 +10,20 @@ export function categoryFilter(items, value) {
 
 export function priceFilter(items, values, sale) {
     return items.filter((item) => {
-        console.log(item.price <= +values.maxPrice);
         if (values.maxPrice != '') {
-            return +item.price >= +values.minPrice && +item.price  <= +values.maxPrice && item.sale == sale;
+            if (sale) {
+                return +item.price >= +values.minPrice && +item.price  <= +values.maxPrice && item.sale == sale;
+            }
+            else {
+                console.log(2);
+                return +item.price >= +values.minPrice && +item.price  <= +values.maxPrice;
+            }
+        }
+        else if (sale) {
+            return +item.price >= +values.minPrice && item.sale == sale;
         }
         else {
-            return +item.price >= +values.minPrice && item.sale == sale;
+            return +item.price >= +values.minPrice;
         }
     });
 }

@@ -10,7 +10,6 @@ function filter() {
     const filter = document.querySelector('.filter');
     const saleCheck = filter.querySelector('#discount-checkbox');
     const checkMark = filter.querySelector('.filter-check_checkmark');
-    let checkSale = false;
     let price = {
         minPrice: '',
         maxPrice: '',
@@ -32,13 +31,12 @@ function filter() {
 
     saleCheck.addEventListener('change', () => {
         checkMark.classList.toggle('checked');
-        checkSale = saleCheck.checked;
         changeFilter();
     });
 
     function changeFilter() {
         getData().then((data) => {
-            renderGoods(priceFilter(data, price, checkSale));
+            renderGoods(priceFilter(data, price, saleCheck.checked));
         });
     }
 }
